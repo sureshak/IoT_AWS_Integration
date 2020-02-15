@@ -25,10 +25,11 @@ public class TokenGeneratorService {
 			if(token != null ){			
 				//Send the token as SMS to operator
 				SmsService smsService=new SmsService();
-				//JSONObject reply=new JSONObject(smsService.sendSms(token,context));
-				JSONObject reply=new JSONObject("{'balance':8,'batch_id':1076662352,'cost':1,'num_messages':1,'message':{'num_parts':1,'sender':'TXTLCL','content':'Authentication Token:654192'},'receipt_url':'qweqwe','custom':'sadasd','messages':[{'id':'11494634449','recipient':919995586967}],'status':'success'}");
+				JSONObject reply=new JSONObject(smsService.sendSms(token,context));
+				//JSONObject reply=new JSONObject("{'balance':8,'batch_id':1076662352,'cost':1,'num_messages':1,'message':{'num_parts':1,'sender':'TXTLCL','content':'Authentication Token:654192'},'receipt_url':'qweqwe','custom':'sadasd','messages':[{'id':'11494634449','recipient':919995586967}],'status':'success'}");
+				context.getLogger().log("reply from SMS Service : "+reply.toString());
 				if(reply.get("status").equals("success") || reply.get("status") == "success"){
-					 //save to dynamoDB
+					//save to dynamoDB
 					String tableName = "TokenManagement";
 					String key = "TokenId";
 					String keyVal = String.valueOf(token);

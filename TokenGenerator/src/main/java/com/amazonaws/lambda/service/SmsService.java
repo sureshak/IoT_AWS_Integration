@@ -11,10 +11,10 @@ public class SmsService {
 	public String sendSms(Integer token, Context context) {
 		try {
 			// Construct data
-			String apiKey = "apikey=" + "beY57rhMHyQQt1ZHBW1f9vhGX";
+			String apiKey = "apikey=" + "Yl+TjHSlIQ-skFpRbeY57rhMHyQQt1ZHBW1f9vhGX";
 			String message = "&message=" + "Authentication Token:"+token;
 			String sender = "&sender=" + "TXTLCL";
-			String numbers = "&numbers=" + "919995586";
+			String numbers = "&numbers=" + "9995586967";
 			
 			// Send data
 			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.textlocal.in/send/?").openConnection();
