@@ -31,7 +31,7 @@ public class TokenGeneratorService {
 				if(reply.get("status").equals("success") || reply.get("status") == "success"){
 					//save to dynamoDB
 					String tableName = "TokenManagement";
-					String key = "TokenId";
+					String key = "Id";
 					String keyVal = String.valueOf(token);
 					String phaseKey = "Phase";
 					String phaseValue = String.valueOf(createTokeninput); 
@@ -44,7 +44,7 @@ public class TokenGeneratorService {
 
 					// Add content to the table
 					itemValues.put(key, AttributeValue.builder().n(keyVal).build());
-					itemValues.put(phaseKey, AttributeValue.builder().n(phaseValue).build());
+					itemValues.put(phaseKey, AttributeValue.builder().s(phaseValue).build());
 
 					// Create a PutItemRequest object
 					PutItemRequest request = PutItemRequest.builder()

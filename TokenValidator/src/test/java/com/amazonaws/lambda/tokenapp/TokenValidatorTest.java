@@ -1,6 +1,7 @@
 package com.amazonaws.lambda.tokenapp;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -19,7 +20,10 @@ public class TokenValidatorTest {
     @BeforeClass
     public static void createInput() throws IOException {
         // TODO: set up your sample input object here.
-        input = null;
+    	HashMap<String,Object> test=new HashMap<String, Object>();
+    	test.put("Id", 102939);
+    	test.put("phase", 1);
+        input = test;
     }
 
     private Context createContext() {
@@ -36,7 +40,7 @@ public class TokenValidatorTest {
         TokenValidator handler = new TokenValidator();
         Context ctx = createContext();
 
-        String output = handler.handleRequest(input, ctx);
+        HashMap<String , Object> output = handler.handleRequest(input, ctx);
 
         // TODO: validate output here if needed.
         Assert.assertEquals("Hello from Lambda!", output);
